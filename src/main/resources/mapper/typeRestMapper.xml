@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="grpc.type.dao.TypeRestDao" >
+  <resultMap id="BaseResultMap" type="grpc.type.dto.TypeRestDto" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="type_varchar" property="typeVarchar" jdbcType="VARCHAR" />
+    <result column="type_char" property="typeChar" jdbcType="CHAR" />
+    <result column="type_text" property="typeText" jdbcType="LONGVARCHAR" />
+    <result column="type_integer" property="typeInteger" jdbcType="INTEGER" />
+    <result column="type_tinyint" property="typeTinyint" jdbcType="TINYINT" />
+    <result column="type_smallint" property="typeSmallint" jdbcType="SMALLINT" />
+    <result column="type_mediumint" property="typeMediumint" jdbcType="INTEGER" />
+    <result column="type_bigint" property="typeBigint" jdbcType="BIGINT" />
+    <result column="type_float" property="typeFloat" jdbcType="REAL" />
+    <result column="type_double" property="typeDouble" jdbcType="DOUBLE" />
+    <result column="type_decimal" property="typeDecimal" jdbcType="DECIMAL" />
+    <result column="type_date" property="typeDate" jdbcType="DATE" />
+    <result column="type_datetime" property="typeDatetime" jdbcType="TIMESTAMP" />
+    <result column="type_time" property="typeTime" jdbcType="TIME" />
+    <result column="type_timestamp" property="typeTimestamp" jdbcType="TIMESTAMP" />
+    <result column="type_blob" property="typeBlob" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type_varchar, type_char, type_text, type_integer, type_tinyint, type_smallint, type_mediumint, 
+    type_bigint, type_float, type_double, type_decimal, type_date, type_datetime, 
+    type_time, type_timestamp, type_blob
+  </sql>
+  <select id="getTypeById" resultMap="BaseResultMap" parameterType="java.lang.Long"
+		resultType="grpc.type.dto.TypeRestDto" >
+    select 
+    <include refid="Base_Column_List" />
+    from type
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+</mapper>
